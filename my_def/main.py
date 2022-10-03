@@ -114,3 +114,17 @@ def convert_to_python_case(text):
             i = '_'+i
         k += i
     return k[1:]
+
+def dice(again):
+    import random
+    again = 'д'
+    if again.lower() == 'д':
+        print('Бросаем кубики... ')
+        print('Значения граней:')
+        print(random.randint(1, 6))
+        print(random.randint(1, 6))
+#
+#dice(input('Бросить кубики еще раз? (д = да, н = нет): '))
+
+
+
