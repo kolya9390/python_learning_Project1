@@ -52,7 +52,7 @@ def predict_n(n):  # Количество попыток для угадыван
     return count
 
 
-def predict_game_switch():
+def predict_game_switch(): # Для запуска игры в Угадай число с выбраным промежутком от 1 до N
     return print(predict_game(input('Введите [YES], когда будете готовы начать игру в числовую угадайку.''\n')))
 
 
@@ -112,7 +112,7 @@ def list_number():
     return numbers
 
 
-def gen_password():  # len(n)
+def gen_password():  # Генератор плюс минус надежных паролей
     import random
     chars = ''
     password = list_symbol() + list_ABC() + list_number()
