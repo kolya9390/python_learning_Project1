@@ -52,7 +52,7 @@ def predict_n(n):  # Количество попыток для угадыван
     return count
 
 
-def predict_game_switch(): # Для запуска игры в Угадай число с выбраным промежутком от 1 до N
+def predict_game_switch():  # Для запуска игры в Угадай число с выбраным промежутком от 1 до N
     return print(predict_game(input('Введите [YES], когда будете готовы начать игру в числовую угадайку.''\n')))
 
 
@@ -120,3 +120,40 @@ def gen_password():  # Генератор плюс минус надежных �
     random.shuffle(password)
     chars = chars.join(password)
     return print(chars) and is_password_good(chars)
+
+
+def task_of_Josephus(n, k):  # Задача Иосифа Флавия
+    print(f'в кругу {n} человек и каждый {k} умерает')
+    answer = int(input('Попробуй угадать под каким номером человек выживет'"\n"))
+    list_n_people = list(range(1, n + 1))
+    while len(list_n_people) != 1:
+        if k > len(list_n_people):
+            while len(list_n_people) != 1:
+
+                step = abs(k - len(list_n_people))
+                while step > len(list_n_people):
+                    step = abs(step - len(list_n_people))
+
+                list_n_people.remove(list_n_people[step - 1])
+                list_n_people = list_n_people[step - 1:] + list_n_people[0:step - 1]
+            break
+
+        list_n_people.remove(list_n_people[k - 1])
+        list_n_people = list_n_people[k - 1:] + list_n_people[0:k - 1]
+        survivor = list_n_people[0]
+        if answer == survivor:
+            print(f'Вам повезло спасти человека под номером {survivor}')
+            print("...")
+            print('Прощай...')
+            break
+    if answer != survivor:
+        print(f'Вы проиграли, ваша ставка сгорела...')
+    return print(f"Выжил человек под номером {survivor}")
+
+
+def switch_task_of_Josephus():
+    return print(task_of_Josephus(int(input('введи количтво людей вставших в круг''\n')),
+                                  int(input('Каждый .. выбывает''\n'))))
+
+
+switch_task_of_Josephus()
