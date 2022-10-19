@@ -124,7 +124,7 @@ def gen_password():  # Генератор плюс минус надежных �
 
 def task_of_Josephus(n, k):  # Задача Иосифа Флавия
     print(f'в кругу {n} человек и каждый {k} умерает')
-    answer = int(input('Попробуй угадать под каким номером человек выживет'"\n"))
+    answer = int(input('Попробуй угадать под каким номером человек выживет, но помни , выжевет только один...'"\n"))
     list_n_people = list(range(1, n + 1))
     while len(list_n_people) != 1:
         if k > len(list_n_people):
@@ -140,15 +140,14 @@ def task_of_Josephus(n, k):  # Задача Иосифа Флавия
 
         list_n_people.remove(list_n_people[k - 1])
         list_n_people = list_n_people[k - 1:] + list_n_people[0:k - 1]
-        survivor = list_n_people[0]
-        if answer == survivor:
-            print(f'Вам повезло спасти человека под номером {survivor}')
-            print("...")
-            print('Прощай...')
-            break
-    if answer != survivor:
-        print(f'Вы проиграли, ваша ставка сгорела...')
-    return print(f"Выжил человек под номером {survivor}")
+    if answer == list_n_people[0]:
+        print(f'Вам повезло спасти человека под номером {list_n_people[0]}')
+        print("...")
+        print('Прощай...')
+
+    if answer != list_n_people[0]:
+        print(f'Вы проиграли, вы погубили ещё одну жизнь')
+    return print(f"человек под номером {list_n_people[0]}")
 
 
 def switch_task_of_Josephus():
@@ -156,4 +155,15 @@ def switch_task_of_Josephus():
                                   int(input('Каждый .. выбывает''\n'))))
 
 
-switch_task_of_Josephus()
+def pascal(n):  # Треугольник Паскаля
+    lst = []
+    n = int(n)
+    for i in range(n+1):
+        m = [1] * (i+1)
+        for j in range(i+1):
+            if j != 0 and j != i:
+                m[j] = lst[i-1][j] + lst[i-1][j-1]
+        lst.append(m)
+
+    return print(lst[n])
+
