@@ -158,12 +158,34 @@ def switch_task_of_Josephus():
 def pascal(n):  # Треугольник Паскаля
     lst = []
     n = int(n)
-    for i in range(n+1):
-        m = [1] * (i+1)
-        for j in range(i+1):
+    for i in range(n + 1):
+        m = [1] * (i + 1)
+        for j in range(i + 1):
             if j != 0 and j != i:
-                m[j] = lst[i-1][j] + lst[i-1][j-1]
+                m[j] = lst[i - 1][j] + lst[i - 1][j - 1]
         lst.append(m)
 
     return print(lst[n])
+
+
+def print_matrix(matrix, n, width=1):  # Вывод матрицы
+    for r in range(n):
+        for c in range(n):
+            print(str(matrix[r][c]).ljust(width), end=' ')
+        print()
+
+
+def input_matrix(n):    # Ввод числовой матрицы
+    matrix = []
+    for i in range(n):
+        temp = [int(num) for num in input().split()]
+        matrix.append(temp)
+    return matrix
+
+
+def fact(n):
+    if n <= 0:
+        return 1
+    else:
+        return n * fact(n-1)
 
